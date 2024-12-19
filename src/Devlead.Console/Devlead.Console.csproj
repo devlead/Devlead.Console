@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="Devlead.Console.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <OutputType Condition="'$(Configuration)'=='Debug'">Exe</OutputType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon/devlead.console.png</PackageIcon>
+    <IsPackable>true</IsPackable>
+    <PackBuildOutput>false</PackBuildOutput>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <ContentTargetFolders>contentFiles</ContentTargetFolders>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageFile Condition="'$(Configuration)'!='Debug'" Include="**/*.cs" Exclude="obj/**;bin/**" PackagePath="$(ContentTargetFolders)\cs\$(TargetFramework)\Devlead\Console\%(RelativeDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+     <PackageReference Include="NuGetizer" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+     <PackageFile Include="../../icon/LICENSE.md" PackagePath="icon/LICENSE.md" />
+     <PackageFile Include="../../icon/devlead.console.png" PackagePath="icon/devlead.console.png" />
+     <PackageFile Include="../../README.md" PackagePath="README.md" />
+     <PackageFile Include="Devlead.Console.props" PackagePath="build\$(TargetFramework)\Devlead.Console.props" />
+     <PackageFile Include="Devlead.Console.targets" PackagePath="build\$(TargetFramework)\Devlead.Console.targets" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)' != 'Debug'">
+    <Compile Remove="Program.cs" />
+  </ItemGroup>
+
+  <Import Project="Devlead.Console.targets" />
+</Project>
