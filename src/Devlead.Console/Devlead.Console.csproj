@@ -12,6 +12,8 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <ContentTargetFolders>contentFiles</ContentTargetFolders>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Devlead.Console.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
