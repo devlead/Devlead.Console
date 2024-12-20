@@ -1,8 +1,4 @@
-﻿using System.Runtime;
-using System.Xml.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace Devlead.Console.Extensions;
+﻿namespace Devlead.Console.Extensions;
 
 /// <summary>
 /// Provides extension methods for configuring application commands and branches.

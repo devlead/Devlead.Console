@@ -21,7 +21,7 @@ services
                 new ConfigurationBuilder()
                     .Add(new MemoryConfigurationSource
                     {
-                        InitialData = GetIntitialInMemoryConfigurationData()
+                        InitialData = GetInitialInMemoryConfigurationData()
                     })
                 .Build()
         ));
@@ -45,7 +45,7 @@ app.Configure(
 
 return await app.RunAsync(args);
 
-static Dictionary<string, string?> GetIntitialInMemoryConfigurationData()
+static Dictionary<string, string?> GetInitialInMemoryConfigurationData()
 {
     var configData = new Dictionary<string, string?>
                         {
@@ -56,7 +56,9 @@ static Dictionary<string, string?> GetIntitialInMemoryConfigurationData()
 
     return configData;
 }
-
+/// <summary>
+/// The Program
+/// </summary>
 public partial class Program
 {
     /// <summary>
