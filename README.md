@@ -8,7 +8,7 @@ Devlead.Console is a streamlined NuGet source package designed to accelerate the
 - Command-line parsing via Spectre.Console
 - Logging via Microsoft.Extensions.Logging.Console
 - Configuration via Microsoft.Extensions.Configuration
-- Source-link for GitHub
+- Source-link for GitHub (or Azure Repos by setting MSBuild property `AzureRepos` to `true`)
 - ...
 
 ## Installation
@@ -72,5 +72,6 @@ The resulting CLI will support commands like:
 myapp test
 myapp yolo test
 ```
+
 
 
