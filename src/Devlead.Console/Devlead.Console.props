@@ -3,7 +3,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,7 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all" Condition="'$(AzureRepos)' != 'true'" />
+    <PackageReference Include="Microsoft.AzureRepos.GitHub" PrivateAssets="all" Condition="'$(AzureRepos)' == 'true'" />
     <PackageReference Include="Spectre.Console.Analyzer" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" />
     <PackageReference Include="Microsoft.Extensions.Logging" />
