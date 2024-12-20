@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all" Condition="'$(AzureRepos)' != 'true'" />
-    <PackageReference Include="Microsoft.AzureRepos.GitHub" PrivateAssets="all" Condition="'$(AzureRepos)' == 'true'" />
+    <PackageReference Include="Microsoft.SourceLink.AzureRepos.Git" PrivateAssets="all" Condition="'$(AzureRepos)' == 'true'" />
     <PackageReference Include="Spectre.Console.Analyzer" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" />
     <PackageReference Include="Microsoft.Extensions.Logging" />
