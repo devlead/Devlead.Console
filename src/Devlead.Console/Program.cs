@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration.Memory;
+﻿#if UseDefaultProgram
+using Microsoft.Extensions.Configuration.Memory;
 
 var configurationBuilder = new ConfigurationBuilder();
 
@@ -85,3 +86,4 @@ public partial class Program
     /// <param name="configData">The dictionary to store configuration key-value pairs.</param>
     static partial void ConfigureInMemory(IDictionary<string, string?> configData);
 }
+#endif

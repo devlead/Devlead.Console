@@ -73,5 +73,16 @@ myapp test
 myapp yolo test
 ```
 
+## MSBuild Properties
+
+You can customize the build behavior using the following MSBuild properties:
+
+- `UseDefaultProgram`: Set to `false` to opt out of the default Program.cs file generation. This allows you to provide your own custom Program implementation.
+  ```xml
+  <PropertyGroup>
+    <UseDefaultProgram>false</UseDefaultProgram>
+  </PropertyGroup>
+  ```
+
 
 
