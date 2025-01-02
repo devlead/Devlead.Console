@@ -17,7 +17,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Using Include="Microsoft.Extensions.DependencyInjection.Extensions" />
+    <Using Include="Microsoft.Extensions.Configuration" />
+    <Using Include="Microsoft.Extensions.DependencyInjection" />
+    <Using Include="Microsoft.Extensions.Logging" />
+    <Using Include="Microsoft.Extensions.Options" />
+    <Using Include="Spectre.Console" />
+    <Using Include="Spectre.Console.Cli" />
+    <Using Include="Spectre.Console.Cli.Extensions.DependencyInjection" />
+    <Using Include="System.Globalization" />
+    <Using Include="System.Net" />
+    <Using Include="System.Text" />
+    <Using Include="System.Text.Json" />
+    <Using Include="System.Text.Json.Serialization" />
+    <Using Include="Devlead.Console.Extensions"/>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageFile Condition="'$(Configuration)'!='Debug'" Include="**/*.cs" Exclude="obj/**;bin/**" PackagePath="$(ContentTargetFolders)\cs\$(TargetFramework)\Devlead\Console\%(RelativeDir)%(Filename)%(Extension)" />
+    <PackageFile Include="obj/$(Configuration)/$(TargetFramework)/Devlead.Console.GlobalUsings.g.cs" PackagePath="$(ContentTargetFolders)\cs\$(TargetFramework)\Devlead\Console\%(RelativeDir)%(Filename)%(Extension)" />
   </ItemGroup>
 
   <ItemGroup>

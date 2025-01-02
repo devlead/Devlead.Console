@@ -10,8 +10,12 @@
   <Choose>
     <When Condition="'$(Configuration)' != 'IntegrationTest'">
       <ItemGroup>
-        <Compile Include="..\Devlead.Console\**\*.cs" Exclude="..\Devlead.Console\obj\**;..\Devlead.Console\bin\**">
-          <Link>Devlead/Console\%(RecursiveDir)%(Filename)%(Extension)</Link>
+        <Compile Include="../Devlead.Console/**/*.cs" Exclude="../Devlead.Console/obj/**;../Devlead.Console/bin/**">
+          <Link>Devlead/Console/%(RecursiveDir)%(Filename)%(Extension)</Link>
+          <Label>Devlead.Console</Label>
+        </Compile>
+        <Compile Include="../Devlead.Console/obj/$(Configuration)/$(TargetFramework)/Devlead.Console.GlobalUsings.g.cs"  >
+          <Link>Devlead/Console/%(RecursiveDir)%(Filename)%(Extension)</Link>
           <Label>Devlead.Console</Label>
         </Compile>
       </ItemGroup>
