@@ -105,9 +105,12 @@ Task("Clean")
             )
     )
 .Then("Build")
-    .Does<BuildData>(
-        static (context, data) => context.DotNetBuild(
-            data.ProjectRoot.FullPath,
+    .DoesForEach<BuildData, FilePath>(
+        static (data, context) => context.GetFiles(data.ProjectRoot.FullPath + "/**/*.csproj")
+                                    .OrderBy(path => path.FullPath.EndsWith("Devlead.Console.csproj") ? 0 : 1)
+                                    .ThenBy(path => path.FullPath, StringComparer.OrdinalIgnoreCase),
+        static (data, item, context) => context.DotNetBuild(
+            item.FullPath,
             new DotNetBuildSettings {
                 NoRestore = true,
                 MSBuildSettings = data.MSBuildSettings

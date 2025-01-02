@@ -6,23 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Using Include="Microsoft.Extensions.DependencyInjection.Extensions" />
-    <Using Include="Microsoft.Extensions.Configuration" />
-    <Using Include="Microsoft.Extensions.DependencyInjection" />
-    <Using Include="Microsoft.Extensions.Logging" />
-    <Using Include="Microsoft.Extensions.Options" />
-    <Using Include="Spectre.Console" />
-    <Using Include="Spectre.Console.Cli" />
-    <Using Include="Spectre.Console.Cli.Extensions.DependencyInjection" />
-    <Using Include="System.Globalization" />
-    <Using Include="System.Net" />
-    <Using Include="System.Text" />
-    <Using Include="System.Text.Json" />
-    <Using Include="System.Text.Json.Serialization" />
-    <Using Include="Devlead.Console.Extensions"/>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all" Condition="'$(AzureRepos)' != 'true'" />
     <PackageReference Include="Microsoft.SourceLink.AzureRepos.Git" PrivateAssets="all" Condition="'$(AzureRepos)' == 'true'" />
     <PackageReference Include="Spectre.Console.Analyzer" PrivateAssets="all" />
