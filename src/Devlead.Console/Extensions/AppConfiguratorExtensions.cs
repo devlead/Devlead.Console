@@ -11,7 +11,7 @@ public static class AppConfiguratorExtensions
     /// <param name="serviceConfig">The app service configuration.</param>
     /// <param name="name">The name of the branch.</param>
     /// <param name="action">The configuration action for the branch.</param>
-    /// <returns>A tuple containing the service collection and branch configurator.</returns>
+    /// <returns>A record containing the app, service collection and branch configurator.</returns>
     /// <exception cref="ArgumentException">Thrown when name is null or whitespace.</exception>
     /// <exception cref="ArgumentNullException">Thrown when action is null.</exception>
     public static AppServiceBranchConfig AddBranch(
@@ -35,7 +35,7 @@ public static class AppConfiguratorExtensions
     /// <typeparam name="TCommand">The type of the command to add.</typeparam>
     /// <param name="serviceConfig">The app service configuration.</param>
     /// <param name="name">The name of the command.</param>
-    /// <returns>A tuple containing the service collection and command configurator.</returns>
+    /// <returns>A record containing the service collection and command configurator.</returns>
     /// <exception cref="ArgumentException">Thrown when name is null or whitespace.</exception>
     public static AppServiceCommandConfig AddCommand<TCommand>(
         this AppServiceConfig serviceConfig,
@@ -117,7 +117,7 @@ public static class AppConfiguratorExtensions
     /// <typeparam name="TCommand">The type of the command to add.</typeparam>
     /// <param name="serviceConfig">The app service configuration.</param>
     /// <param name="name">The name of the command.</param>
-    /// <returns>A tuple containing the service collection and command configurator.</returns>
+    /// <returns>A recor containing the app, service collection and command configurator.</returns>
     public static AppServiceCommandConfig AddCommand<TCommand>(
         this AppServiceConfig<CommandSettings> serviceConfig,
         string name)
@@ -149,7 +149,7 @@ public static class AppConfiguratorExtensions
     /// </summary>
     /// <typeparam name="TCommand">The type of the command to set as default.</typeparam>
     /// <param name="serviceConfig">The app service configuration.</param>
-    /// <returns>A tuple containing the updated service configuration.</returns>
+    /// <returns>A record containing the updated service configuration.</returns>
     public static AppServiceConfig SetDefaultCommand<TCommand>(
         this AppServiceConfig serviceConfig)
         where TCommand : class, ICommand

@@ -77,8 +77,8 @@ public partial class Program
     /// <summary>
     /// Configures the command-line application with additional settings.
     /// </summary>
-    /// <param name="serviceConfig">A tuple containing the service collection and configurator.</param>
-    static partial void ConfigureApp(AppServiceConfig serviceConfig);
+    /// <param name="appServiceConfig">A AppServiceConfig containing the app, service collection and configurator.</param>
+    static partial void ConfigureApp(AppServiceConfig appServiceConfig);
 
     /// <summary>
     /// Configures additional in-memory configuration data.

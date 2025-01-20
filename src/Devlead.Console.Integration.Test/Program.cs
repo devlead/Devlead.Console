@@ -23,14 +23,14 @@ public partial class Program
         services.AddSingleton<TestService>();
     }
 
-    static partial void ConfigureApp(AppServiceConfig serviceConfig)
+    static partial void ConfigureApp(AppServiceConfig appServiceConfig)
     {
-        serviceConfig
+        appServiceConfig
             .AddCommand<TestCommand>("test")
                 .WithDescription("Example test command.")
                 .WithExample(["test"]);
 
-        serviceConfig
+        appServiceConfig
             .AddBranch(
                 "yolo",
                 c => c.AddCommand<TestCommand>("test")
@@ -38,8 +38,8 @@ public partial class Program
                         .WithExample(["yolo", "test"])
             );
 
-        serviceConfig.SetApplicationName("MyApp");
+        appServiceConfig.SetApplicationName("MyApp");
         
-        serviceConfig.SetDefaultCommand<TestCommand>();
+        appServiceConfig.SetDefaultCommand<TestCommand>();
     }
 }
