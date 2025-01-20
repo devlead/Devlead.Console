@@ -14,17 +14,18 @@ public static class AppConfiguratorExtensions
     /// <returns>A tuple containing the service collection and branch configurator.</returns>
     /// <exception cref="ArgumentException">Thrown when name is null or whitespace.</exception>
     /// <exception cref="ArgumentNullException">Thrown when action is null.</exception>
-    public static (IServiceCollection services, IBranchConfigurator configurator) AddBranch(
-        this (IServiceCollection services, IConfigurator configurator) serviceConfig,
+    public static (CommandApp app, IServiceCollection services, IBranchConfigurator configurator) AddBranch(
+        this (CommandApp app, IServiceCollection services, IConfigurator configurator) serviceConfig,
         string name,
-        Action<(IServiceCollection, IConfigurator<CommandSettings>)> action)
+        Action<(CommandApp app, IServiceCollection, IConfigurator<CommandSettings>)> action)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
         ArgumentNullException.ThrowIfNull(action);
        
         return (
+            serviceConfig.app,
             serviceConfig.services,
-            serviceConfig.configurator.AddBranch(name, configurator=>action((serviceConfig.services, configurator)))
+            serviceConfig.configurator.AddBranch(name, configurator=>action((serviceConfig.app, serviceConfig.services, configurator)))
             );
     }
 
@@ -36,8 +37,8 @@ public static class AppConfiguratorExtensions
     /// <param name="name">The name of the command.</param>
     /// <returns>A tuple containing the service collection and command configurator.</returns>
     /// <exception cref="ArgumentException">Thrown when name is null or whitespace.</exception>
-    public static (IServiceCollection services, ICommandConfigurator configurator) AddCommand<TCommand>(
-        this (IServiceCollection services, IConfigurator configurator) serviceConfig,
+    public static (CommandApp app, IServiceCollection services, ICommandConfigurator configurator) AddCommand<TCommand>(
+        this (CommandApp app, IServiceCollection services, IConfigurator configurator) serviceConfig,
         string name
         )
         where TCommand : class, ICommand
@@ -47,6 +48,7 @@ public static class AppConfiguratorExtensions
         serviceConfig.services.TryAddSingleton<TCommand>();
 
         return (
+            serviceConfig.app,
             serviceConfig.services,
             serviceConfig.configurator.AddCommand<TCommand>(name)
             );
@@ -59,8 +61,9 @@ public static class AppConfiguratorExtensions
     /// <param name="serviceConfig">The service configuration tuple.</param>
     /// <param name="args">The example arguments.</param>
     /// <returns>The same <see cref="ICommandConfigurator"/> instance so that multiple calls can be chained.</returns>
-    public static (IServiceCollection services, ICommandConfigurator configurator) WithExample(this (IServiceCollection services, ICommandConfigurator configurator) serviceConfig, params string[] args)
+    public static (CommandApp app, IServiceCollection services, ICommandConfigurator configurator) WithExample(this (CommandApp app, IServiceCollection services, ICommandConfigurator configurator) serviceConfig, params string[] args)
         => (
+            serviceConfig.app,
             serviceConfig.services,
             serviceConfig.configurator.WithExample(args)
         );
@@ -71,8 +74,9 @@ public static class AppConfiguratorExtensions
     /// <param name="serviceConfig">The service configuration tuple.</param>
     /// <param name="name">The alias to add to the command being configured.</param>
     /// <returns>The same <see cref="ICommandConfigurator"/> instance so that multiple calls can be chained.</returns>
-    public static (IServiceCollection services, ICommandConfigurator configurator) WithAlias(this (IServiceCollection services, ICommandConfigurator configurator) serviceConfig, string name)
+    public static (CommandApp app, IServiceCollection services, ICommandConfigurator configurator) WithAlias(this (CommandApp app, IServiceCollection services, ICommandConfigurator configurator) serviceConfig, string name)
         => (
+            serviceConfig.app,
             serviceConfig.services,
             serviceConfig.configurator.WithAlias(name)
         );
@@ -83,8 +87,9 @@ public static class AppConfiguratorExtensions
     /// <param name="serviceConfig">The service configuration tuple.</param>
     /// <param name="description">The command description.</param>
     /// <returns>The same <see cref="ICommandConfigurator"/> instance so that multiple calls can be chained.</returns>
-    public static (IServiceCollection services, ICommandConfigurator configurator) WithDescription(this (IServiceCollection services, ICommandConfigurator configurator) serviceConfig, string description)
+    public static (CommandApp app, IServiceCollection services, ICommandConfigurator configurator) WithDescription(this (CommandApp app, IServiceCollection services, ICommandConfigurator configurator) serviceConfig, string description)
         => (
+            serviceConfig.app,
             serviceConfig.services,
             serviceConfig.configurator.WithDescription(description)
         );
@@ -95,8 +100,9 @@ public static class AppConfiguratorExtensions
     /// <param name="serviceConfig">The service configuration tuple.</param>
     /// <param name="data">The data to pass to the command.</param>
     /// <returns>The same <see cref="ICommandConfigurator"/> instance so that multiple calls can be chained.</returns>
-    public static (IServiceCollection services, ICommandConfigurator configurator) WithData(this (IServiceCollection services, ICommandConfigurator configurator) serviceConfig, object data)
+    public static (CommandApp app, IServiceCollection services, ICommandConfigurator configurator) WithData(this (CommandApp app, IServiceCollection services, ICommandConfigurator configurator) serviceConfig, object data)
         => (
+            serviceConfig.app,
             serviceConfig.services,
             serviceConfig.configurator.WithData(data)
         );
@@ -108,8 +114,9 @@ public static class AppConfiguratorExtensions
     /// </summary>
     /// <param name="serviceConfig">The service configuration tuple.</param>
     /// <returns>The same <see cref="ICommandConfigurator"/> instance so that multiple calls can be chained.</returns>
-    public static (IServiceCollection services, ICommandConfigurator configurator) IsHidden(this (IServiceCollection services, ICommandConfigurator configurator) serviceConfig)
+    public static (CommandApp app, IServiceCollection services, ICommandConfigurator configurator) IsHidden(this (CommandApp app, IServiceCollection services, ICommandConfigurator configurator) serviceConfig)
     => (
+            serviceConfig.app,
             serviceConfig.services,
             serviceConfig.configurator.IsHidden()
         );
@@ -121,14 +128,45 @@ public static class AppConfiguratorExtensions
     /// <param name="serviceConfig">The service configuration tuple.</param>
     /// <param name="name">The name of the command.</param>
     /// <returns>A tuple containing the service collection and command configurator.</returns>
-    public static (IServiceCollection services, ICommandConfigurator configurator) AddCommand<TCommand>(
-        this (IServiceCollection services, IConfigurator<CommandSettings> configurator) serviceConfig,
+    public static (CommandApp app, IServiceCollection services, ICommandConfigurator configurator) AddCommand<TCommand>(
+        this (CommandApp app, IServiceCollection services, IConfigurator<CommandSettings> configurator) serviceConfig,
         string name)
         where TCommand : class, ICommandLimiter<CommandSettings>
     {
         return (
-           serviceConfig.services,
-           serviceConfig.configurator.AddCommand<TCommand>(name)
+            serviceConfig.app,
+            serviceConfig.services,
+            serviceConfig.configurator.AddCommand<TCommand>(name)
            );
+    }
+
+    /// <summary>
+    /// Sets the name of the application.
+    /// </summary>
+    /// <param name="serviceConfig">The service configuration tuple.</param>
+    /// <param name="name">The name of the application.</param>
+    /// <returns>A configurator that can be used to configure the application further.</returns>
+    public static  (CommandApp app, IServiceCollection services, IConfigurator configuration) SetApplicationName(
+        this (CommandApp app, IServiceCollection services, IConfigurator configuration) serviceConfig,
+        string name)
+    {
+        ArgumentNullException.ThrowIfNull(serviceConfig.configuration);
+
+        serviceConfig.configuration.SetApplicationName(name);
+        return serviceConfig;
+    }
+
+    /// <summary>
+    /// Sets the default command for the application.
+    /// </summary>
+    /// <typeparam name="TCommand">The type of the command to set as default.</typeparam>
+    /// <param name="serviceConfig">The service configuration tuple.</param>
+    /// <returns>A tuple containing the updated service configuration.</returns>
+    public static (CommandApp app, IServiceCollection services, IConfigurator configuration) SetDefaultCommand<TCommand>(
+        this (CommandApp app, IServiceCollection services, IConfigurator configuration) serviceConfig)
+        where TCommand : class, ICommand
+    {
+            serviceConfig.app.SetDefaultCommand<TCommand>();
+            return (serviceConfig.app, serviceConfig.services, serviceConfig.configuration);
     }
 }
