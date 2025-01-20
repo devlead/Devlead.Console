@@ -183,4 +183,37 @@ public static class AppConfiguratorExtensions
         appServiceConfig.App.SetDefaultCommand<TCommand>();
         return appServiceConfig;
     }
+
+    /// <summary>
+    /// Sets the description for the command settings configuration.
+    /// </summary>
+    /// <typeparam name="TSettings">The type of command settings.</typeparam>
+    /// <param name="appServiceConfig">The app service configuration.</param>
+    /// <param name="description">The description to set.</param>
+    /// <returns>The app service configuration.</returns>
+    public static AppServiceConfig<TSettings> SetDescription<TSettings>(this AppServiceConfig<TSettings> appServiceConfig, string description)
+        where TSettings : CommandSettings
+    {
+        appServiceConfig.Configurator.SetDescription(description);
+        return appServiceConfig;
+    }
+
+    /// <summary>
+    /// Adds a command with custom settings configuration.
+    /// </summary>
+    /// <typeparam name="TCommand">The type of the command to add.</typeparam>
+    /// <typeparam name="TSettings">The type of settings for the command.</typeparam>
+    /// <param name="appServiceConfig">The app service configuration.</param>
+    /// <param name="name">The name of the command.</param>
+    /// <returns>A record containing the app service command configuration.</returns>
+    public static AppServiceCommandConfig AddCommand<TCommand, TSettings>(this AppServiceConfig<TSettings> appServiceConfig, string name)
+        where TCommand : class, ICommandLimiter<TSettings>
+        where TSettings : CommandSettings
+    {
+        return new AppServiceCommandConfig(
+            appServiceConfig.App,
+            appServiceConfig.Services,
+            appServiceConfig.Configurator.AddCommand<TCommand>(name)
+           );
+    }
 }
