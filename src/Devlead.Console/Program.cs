@@ -41,7 +41,7 @@ app.Configure(
             (ex, _) => AnsiConsole.WriteException(ex, ExceptionFormats.ShowLinks)
             );
 
-        ConfigureApp((app, services, config));
+        ConfigureApp(new(app, services, config));
     });
 
 return await app.RunAsync(args);
@@ -78,7 +78,7 @@ public partial class Program
     /// Configures the command-line application with additional settings.
     /// </summary>
     /// <param name="serviceConfig">A tuple containing the service collection and configurator.</param>
-    static partial void ConfigureApp((CommandApp app, IServiceCollection services, IConfigurator configuration) serviceConfig);
+    static partial void ConfigureApp(AppServiceConfig serviceConfig);
 
     /// <summary>
     /// Configures additional in-memory configuration data.
