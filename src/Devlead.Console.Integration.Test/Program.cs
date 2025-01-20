@@ -23,7 +23,7 @@ public partial class Program
         services.AddSingleton<TestService>();
     }
 
-    static partial void ConfigureApp((IServiceCollection services, IConfigurator configuration) serviceConfig)
+    static partial void ConfigureApp((CommandApp app, IServiceCollection services, IConfigurator configuration) serviceConfig)
     {
         serviceConfig
             .AddCommand<TestCommand>("test")
@@ -37,5 +37,9 @@ public partial class Program
                         .WithDescription("Example test command.")
                         .WithExample(["yolo", "test"])
             );
+
+        serviceConfig.SetApplicationName("MyApp");
+        
+        serviceConfig.SetDefaultCommand<TestCommand>();
     }
 }
