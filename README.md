@@ -41,16 +41,16 @@ public partial class Program
     }
 
     // Configure commands
-    static partial void ConfigureApp((CommandApp app, IServiceCollection services, IConfigurator configuration) serviceConfig)
+    static partial void ConfigureApp(AppServiceConfig appServiceConfig)
     {
         // Example: Add a root level command
-        serviceConfig
+        appServiceConfig
             .AddCommand<TestCommand>("test")
                 .WithDescription("Example test command.")
                 .WithExample(["test"]);
 
         // Example: Add nested commands using branches
-        serviceConfig
+        appServiceConfig
             .AddBranch(
                 "yolo",
                 c => c.AddCommand<TestCommand>("test")
@@ -59,7 +59,7 @@ public partial class Program
             );
 
         // Example: Set application name
-        serviceConfig.SetApplicationName("myapp");
+        appServiceConfig.SetApplicationName("myapp");
     }
 }
 ```
