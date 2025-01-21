@@ -87,5 +87,13 @@ You can customize the build behavior using the following MSBuild properties:
   </PropertyGroup>
   ```
 
+## Example Projects
+
+- [ARI](https://github.com/devlead/ARI)
+- [Blobify](https://github.com/devlead/Blobify)
+- [BRI](https://github.com/devlead/bri)
+- [DPI](https://github.com/devlead/DPI)
+- [UnpackDacPac](https://github.com/devlead/UnpackDacPac)
+
 
 
