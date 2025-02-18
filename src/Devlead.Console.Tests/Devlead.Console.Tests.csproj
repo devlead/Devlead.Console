@@ -8,12 +8,23 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Devlead.Testing.MockHttp" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="NUnit" />
     <PackageReference Include="NUnit.Analyzers" />
     <PackageReference Include="NUnit3TestAdapter" />
+    <PackageReference Include="Spectre.Console.Testing" />
+    <PackageReference Include="Verify.NUnit" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Devlead.Console.Integration.Test\Devlead.Console.Integration.Test.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Using Include="Devlead.Console" />
+    <Using Include="Devlead.Console.Extensions" />
+    <Using Include="Devlead.Console.Integration.Test.Extensions" />
     <Using Include="NUnit.Framework" />
+    <Using Include="Spectre.Console.Cli" />
+    <Using Include="Spectre.Console.Testing" />
   </ItemGroup>
 </Project>

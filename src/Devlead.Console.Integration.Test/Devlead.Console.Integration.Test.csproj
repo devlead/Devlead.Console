@@ -14,7 +14,7 @@
           <Link>Devlead/Console/%(RecursiveDir)%(Filename)%(Extension)</Link>
           <Label>Devlead.Console</Label>
         </Compile>
-        <Compile Include="../Devlead.Console/obj/$(Configuration)/$(TargetFramework)/Devlead.Console.GlobalUsings.g.cs"  >
+        <Compile Include="../Devlead.Console/obj/$(Configuration)/$(TargetFramework)/Devlead.Console.GlobalUsings.g.cs">
           <Link>Devlead/Console/%(RecursiveDir)%(Filename)%(Extension)</Link>
           <Label>Devlead.Console</Label>
         </Compile>
