@@ -1,4 +1,5 @@
 ﻿#if UseDefaultProgram
+using Devlead.Console;
 using Microsoft.Extensions.Configuration.Memory;
 
 var configurationBuilder = new ConfigurationBuilder();
@@ -29,20 +30,7 @@ services
 
 AddServices(services);
 
-using var registrar = new DependencyInjectionRegistrar(services);
-var app = new CommandApp(registrar);
-
-app.Configure(
-    config =>
-    {
-        config.UseAssemblyInformationalVersion();
-        config.ValidateExamples();
-        config.SetExceptionHandler(
-            (ex, _) => AnsiConsole.WriteException(ex, ExceptionFormats.ShowLinks)
-            );
-
-        ConfigureApp(new(app, services, config));
-    });
+using DependencyInjectionCommandApp app = GetNewCommandApp(services);
 
 return await app.RunAsync(args);
 
@@ -85,5 +73,29 @@ public partial class Program
     /// </summary>
     /// <param name="configData">The dictionary to store configuration key-value pairs.</param>
     static partial void ConfigureInMemory(IDictionary<string, string?> configData);
+
+    /// <summary>
+    /// Creates and configures a new DependencyInjectionCommandApp instance.
+    /// </summary>
+    /// <param name="services">The ServiceCollection to use for dependency injection.</param>
+    /// <returns>A configured DependencyInjectionCommandApp instance.</returns>
+    public static DependencyInjectionCommandApp GetNewCommandApp(ServiceCollection services)
+    {
+        var app = DependencyInjectionCommandApp.FromServiceCollection(services);
+
+
+        app.Configure(
+            config =>
+            {
+                config.UseAssemblyInformationalVersion();
+                config.ValidateExamples();
+                config.SetExceptionHandler(
+                    (ex, _) => AnsiConsole.WriteException(ex, ExceptionFormats.ShowLinks)
+                    );
+
+                ConfigureApp(new(app, services, config));
+            });
+        return app;
+    }
 }
 #endif
