@@ -30,7 +30,7 @@
     <Using Include="System.Text" />
     <Using Include="System.Text.Json" />
     <Using Include="System.Text.Json.Serialization" />
-    <Using Include="Devlead.Console.Extensions"/>
+    <Using Include="Devlead.Console.Extensions" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,6 +52,7 @@
 
   <ItemGroup Condition="'$(Configuration)' != 'Debug'">
     <Compile Remove="Program.cs" />
+    <Compile Remove="Extensions\ServiceCollectionExtensions.cs" />
   </ItemGroup>
 
   <Import Project="Devlead.Console.targets" />

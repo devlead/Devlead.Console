@@ -1,6 +1,5 @@
 ﻿
-using Devlead.Console.Integration.Test.Models;
-using Devlead.Console.Integration.Test.Services;
+using Devlead.Console.Integration.Test.Extensions;
 
 public partial class Program
 {
@@ -15,12 +14,7 @@ public partial class Program
     static partial void AddServices(IServiceCollection services)
     {
         services
-            .AddOptions<TestServiceSettings>()
-            .BindConfiguration(
-                nameof(TestService)
-            );
-
-        services.AddSingleton<TestService>();
+            .AddTestService();
     }
 
     static partial void ConfigureApp(AppServiceConfig appServiceConfig)

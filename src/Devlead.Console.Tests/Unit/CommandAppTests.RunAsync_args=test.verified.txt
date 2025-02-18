@@ -1,0 +1,7 @@
+﻿{
+  ExitCode: 1,
+  Output:
+Version: 1.0.0.0
+TestVersion: 
+
+}

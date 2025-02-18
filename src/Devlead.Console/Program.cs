@@ -87,14 +87,15 @@ public partial class Program
     {
         var app = DependencyInjectionCommandApp.FromServiceCollection(services);
 
-        if (ansiConsole != null)
-        {
-            AnsiConsole.Console = ansiConsole;
-        }
-        
         app.Configure(
             config =>
             {
+                if (ansiConsole != null)
+                {
+                    AnsiConsole.Console = ansiConsole;
+                    config.ConfigureConsole(ansiConsole);
+                }
+
                 config.UseAssemblyInformationalVersion();
                 config.ValidateExamples();
                 config.SetExceptionHandler(

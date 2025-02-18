@@ -1,0 +1,16 @@
+﻿{
+  ExitCode: 1,
+  Output:
+USAGE:
+    MyApp yolo [OPTIONS] <COMMAND>
+
+EXAMPLES:
+    MyApp yolo test
+
+OPTIONS:
+    -h, --help    Prints help information
+
+COMMANDS:
+    test    Example test command
+
+}
