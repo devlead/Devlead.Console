@@ -78,12 +78,20 @@ public partial class Program
     /// Creates and configures a new DependencyInjectionCommandApp instance.
     /// </summary>
     /// <param name="services">The ServiceCollection to use for dependency injection.</param>
+    /// <param name="ansiConsole">The AnsiConsole instance to use for console output. If null, uses the default console.</param>
     /// <returns>A configured DependencyInjectionCommandApp instance.</returns>
-    public static DependencyInjectionCommandApp GetNewCommandApp(ServiceCollection services)
+    public static DependencyInjectionCommandApp GetNewCommandApp(
+        IServiceCollection services,
+        IAnsiConsole? ansiConsole = null
+        )
     {
         var app = DependencyInjectionCommandApp.FromServiceCollection(services);
 
-
+        if (ansiConsole != null)
+        {
+            AnsiConsole.Console = ansiConsole;
+        }
+        
         app.Configure(
             config =>
             {
