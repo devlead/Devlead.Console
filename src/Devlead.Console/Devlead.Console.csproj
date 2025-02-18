@@ -52,6 +52,7 @@
 
   <ItemGroup Condition="'$(Configuration)' != 'Debug'">
     <Compile Remove="Program.cs" />
+    <Compile Remove="Extensions\ServiceCollectionExtensions.cs" />
   </ItemGroup>
 
   <Import Project="Devlead.Console.targets" />

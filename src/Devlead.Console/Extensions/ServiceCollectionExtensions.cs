@@ -1,11 +1,11 @@
-﻿namespace Devlead.Console.Extensions;
+﻿#if UseDefaultProgram
+namespace Devlead.Console.Extensions;
 
 /// <summary>
 /// Provides extension methods for IServiceCollection to configure command app services.
 /// </summary>
 public static class ServiceCollectionExtensions
 {
-#if UseDefaultProgram
     /// <summary>
     /// Adds command app services to the service collection.
     /// </summary>
@@ -24,5 +24,5 @@ public static class ServiceCollectionExtensions
             .AddSingleton(Program.GetNewCommandApp(services, ansiConsole))
             .AddSingleton<ICommandApp>(static services => services.GetRequiredService<DependencyInjectionCommandApp>());
     }
-#endif
 }
+#endif
