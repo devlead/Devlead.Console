@@ -3,7 +3,7 @@ namespace Devlead.Console.Extensions;
 /// <summary>
 /// Represents the configuration for application services.
 /// </summary>
-public record AppServiceConfig(CommandApp App, IServiceCollection Services, IConfigurator Configurator); 
+public record AppServiceConfig(DependencyInjectionCommandApp App, IServiceCollection Services, IConfigurator Configurator); 
 
 /// <summary>
 /// Represents the configuration for application services with custom settings.
@@ -12,7 +12,7 @@ public record AppServiceConfig(CommandApp App, IServiceCollection Services, ICon
 /// <param name="App">The command application instance.</param>
 /// <param name="Services">The service collection.</param>
 /// <param name="Configurator">The command configurator with settings.</param>
-public record AppServiceConfig<TSettings>(CommandApp App, IServiceCollection Services, IConfigurator<TSettings> Configurator)
+public record AppServiceConfig<TSettings>(DependencyInjectionCommandApp App, IServiceCollection Services, IConfigurator<TSettings> Configurator)
     where TSettings : CommandSettings
 {
     /// <summary>
@@ -32,7 +32,7 @@ public record AppServiceConfig<TSettings>(CommandApp App, IServiceCollection Ser
 /// <param name="App">The command application instance.</param>
 /// <param name="Services">The service collection.</param>
 /// <param name="CommandConfigurator">The command configurator.</param>
-public record AppServiceCommandConfig(CommandApp App, IServiceCollection Services, ICommandConfigurator CommandConfigurator);
+public record AppServiceCommandConfig(DependencyInjectionCommandApp App, IServiceCollection Services, ICommandConfigurator CommandConfigurator);
 
 /// <summary>
 /// Represents the configuration for application services with branch configuration.
@@ -40,4 +40,4 @@ public record AppServiceCommandConfig(CommandApp App, IServiceCollection Service
 /// <param name="App">The command application instance.</param>
 /// <param name="Services">The service collection.</param>
 /// <param name="BranchConfigurator">The branch configurator.</param>
-public record AppServiceBranchConfig(CommandApp App, IServiceCollection Services, IBranchConfigurator BranchConfigurator);
+public record AppServiceBranchConfig(DependencyInjectionCommandApp App, IServiceCollection Services, IBranchConfigurator BranchConfigurator);
