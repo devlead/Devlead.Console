@@ -1,11 +1,4 @@
-﻿using Devlead.Console;
-using Devlead.Console.Integration.Test.Models;
-using Devlead.Console.Integration.Test.Services;
-using Microsoft.Extensions.Configuration.Memory;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Spectre.Console;
-public static partial class ServiceProviderFixture
+﻿public static partial class ServiceProviderFixture
 {
     static partial void ConfigureInMemory(IDictionary<string, string?> configData)
     {

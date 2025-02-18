@@ -23,6 +23,7 @@
     <Using Include="Devlead.Console" />
     <Using Include="Devlead.Console.Extensions" />
     <Using Include="Devlead.Console.Integration.Test.Extensions" />
+    <Using Include="Microsoft.Extensions.DependencyInjection"/>
     <Using Include="NUnit.Framework" />
     <Using Include="Spectre.Console.Cli" />
     <Using Include="Spectre.Console.Testing" />
