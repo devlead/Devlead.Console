@@ -85,21 +85,18 @@ public partial class Program
         IAnsiConsole? ansiConsole = null
         )
     {
+        IAnsiConsole GetConsole() => AnsiConsole.Console = ansiConsole ?? AnsiConsole.Console;
+
         var app = DependencyInjectionCommandApp.FromServiceCollection(services);
 
         app.Configure(
             config =>
             {
-                if (ansiConsole != null)
-                {
-                    AnsiConsole.Console = ansiConsole;
-                    config.ConfigureConsole(ansiConsole);
-                }
-
+                config.ConfigureConsole(GetConsole());
                 config.UseAssemblyInformationalVersion();
                 config.ValidateExamples();
                 config.SetExceptionHandler(
-                    (ex, _) => AnsiConsole.WriteException(ex, ExceptionFormats.ShowLinks)
+                    (ex, _) => GetConsole().WriteException(ex, ExceptionFormats.ShowLinks)
                     );
 
                 ConfigureApp(new(app, services, config));
