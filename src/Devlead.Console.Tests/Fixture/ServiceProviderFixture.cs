@@ -8,5 +8,7 @@
     static partial void InitServiceProvider(IServiceCollection services)
         => services
                 .AddTestService()
-                .AddCommandApp(new TestConsole());
+                .AddCommandApp(
+                    new TestConsole()
+                );
 }

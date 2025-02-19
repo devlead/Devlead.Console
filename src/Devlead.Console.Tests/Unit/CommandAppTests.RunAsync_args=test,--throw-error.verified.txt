@@ -1,0 +1,6 @@
+﻿{
+  ExitCode: -1,
+  Output:
+System.InvalidOperationException: ThrowError specified
+
+}

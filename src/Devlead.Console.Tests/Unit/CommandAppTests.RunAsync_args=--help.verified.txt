@@ -8,6 +8,7 @@ OPTIONS:
     -h, --help            Prints help information   
     -v, --version         Prints version information
         --test-version    Version to test against   
+        --throw-error     Throw error               
 
 COMMANDS:
     test    Example test command

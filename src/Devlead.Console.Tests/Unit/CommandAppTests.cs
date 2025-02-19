@@ -5,6 +5,7 @@ public class CommandAppTests
     [TestCase("--help")]
     [TestCase("test")]
     [TestCase("test", "--test-version=1.0.0.0")]
+    [TestCase("test", "--throw-error")]
     [TestCase("yolo")]
     public async Task RunAsync(params string[] args)
     {
