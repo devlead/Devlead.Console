@@ -1,6 +1,7 @@
 ﻿#if UseDefaultProgram
 using Devlead.Console;
 using Microsoft.Extensions.Configuration.Memory;
+using Spectre.Console;
 
 var configurationBuilder = new ConfigurationBuilder();
 
@@ -79,10 +80,12 @@ public partial class Program
     /// </summary>
     /// <param name="services">The ServiceCollection to use for dependency injection.</param>
     /// <param name="ansiConsole">The AnsiConsole instance to use for console output. If null, uses the default console.</param>
+    /// <param name="exceptionFormat">The format options for exception output.</param>
     /// <returns>A configured DependencyInjectionCommandApp instance.</returns>
     public static DependencyInjectionCommandApp GetNewCommandApp(
         IServiceCollection services,
-        IAnsiConsole? ansiConsole = null
+        IAnsiConsole? ansiConsole = null,
+        ExceptionFormats exceptionFormat = ExceptionFormats.ShowLinks
         )
     {
         IAnsiConsole GetConsole() => AnsiConsole.Console = ansiConsole ?? AnsiConsole.Console;
@@ -96,7 +99,7 @@ public partial class Program
                 config.UseAssemblyInformationalVersion();
                 config.ValidateExamples();
                 config.SetExceptionHandler(
-                    (ex, _) => GetConsole().WriteException(ex, ExceptionFormats.ShowLinks)
+                    (ex, _) => GetConsole().WriteException(ex, exceptionFormat)
                     );
 
                 ConfigureApp(new(app, services, config));

@@ -5,6 +5,11 @@ public class TestCommand(TestService testService) : Command<TestSettings>
 {
     public override int Execute(CommandContext context, TestSettings settings)
     {
+        if (settings.ThrowError)
+        {
+            throw new InvalidOperationException($"{nameof(settings.ThrowError)} specified");
+        }
+
         var version = testService.GetVersion();
         
         AnsiConsole.WriteLine($"Version: {version}");
