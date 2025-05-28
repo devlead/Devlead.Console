@@ -6,15 +6,15 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="coverlet.collector" Version="6.0.4" />
-    <PackageVersion Include="Devlead.Testing.MockHttp" Version="2025.4.10.131" />
+    <PackageVersion Include="Devlead.Testing.MockHttp" Version="2025.5.14.163" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="9.0.5" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="9.0.5" />
     <PackageVersion Include="Microsoft.Extensions.Logging" Version="9.0.5" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
     <PackageVersion Include="Microsoft.SourceLink.AzureRepos.Git" Version="8.0.0" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.0" />
     <PackageVersion Include="NuGetizer" Version="1.2.4" />
-    <PackageVersion Include="NUnit.Analyzers" Version="4.7.0" />
+    <PackageVersion Include="NUnit.Analyzers" Version="4.8.0" />
     <PackageVersion Include="NUnit" Version="4.3.2" />
     <PackageVersion Include="NUnit3TestAdapter" Version="5.0.0" />
     <PackageVersion Include="Spectre.Console.Analyzer" Version="1.0.0" />
