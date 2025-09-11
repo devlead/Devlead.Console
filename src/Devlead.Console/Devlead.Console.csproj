@@ -2,7 +2,7 @@
   <Import Project="Devlead.Console.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
     <OutputType Condition="'$(Configuration)'=='Debug'">Exe</OutputType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon/devlead.console.png</PackageIcon>
