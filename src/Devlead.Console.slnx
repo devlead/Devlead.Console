@@ -1,0 +1,10 @@
+<Solution>
+  <Project Path="Devlead.Console.Integration.Test/Devlead.Console.Integration.Test.csproj" />
+  <Project Path="Devlead.Console.Tests/Devlead.Console.Tests.csproj" />
+  <Project Path="Devlead.Console/Devlead.Console.csproj" />
+  <Properties Name="ProjectDependencies">
+    <Property Name="{A6D030C7-834E-46B9-A192-3EAFEB50AC35}.0" Value="{449A8B5A-4C44-418E-8482-2DE3780FE707}" />
+    <Property Name="{A6D030C7-834E-46B9-A192-3EAFEB50AC35}.1" Value="{E61505AA-A4AD-42F2-BB1A-DFBAE37E850A}" />
+    <Property Name="{E61505AA-A4AD-42F2-BB1A-DFBAE37E850A}.0" Value="{449A8B5A-4C44-418E-8482-2DE3780FE707}" />
+  </Properties>
+</Solution>

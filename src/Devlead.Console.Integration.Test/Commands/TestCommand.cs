@@ -3,7 +3,7 @@ namespace Devlead.Console.Integration.Test.Commands;
 
 public class TestCommand(TestService testService) : Command<TestSettings>
 {
-    public override int Execute(CommandContext context, TestSettings settings)
+    public override int Execute(CommandContext context, TestSettings settings, CancellationToken cancellationToken)
     {
         if (settings.ThrowError)
         {

@@ -32,8 +32,8 @@ services
 AddServices(services);
 
 using DependencyInjectionCommandApp app = GetNewCommandApp(services);
-
-return await app.RunAsync(args);
+var cancellationToken = new CancellationTokenSource().Token;
+return await app.RunAsync(args, cancellationToken);
 
 static Dictionary<string, string?> GetInitialInMemoryConfigurationData()
 {
