@@ -37,12 +37,12 @@ public class DependencyInjectionCommandApp(
     }
 
     /// <inheritdoc/>
-    public int Run(IEnumerable<string> args)
-        => commandApp.Run(args);
+    public int Run(IEnumerable<string> args, CancellationToken cancellationToken)
+        => commandApp.Run(args,cancellationToken);
 
     /// <inheritdoc/>
-    public Task<int> RunAsync(IEnumerable<string> args)
-        => commandApp.RunAsync(args);
+    public Task<int> RunAsync(IEnumerable<string> args, CancellationToken cancellationToken)
+        => commandApp.RunAsync(args,cancellationToken);
 
     /// <summary>
     /// Sets the default command.
