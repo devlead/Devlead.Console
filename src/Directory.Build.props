@@ -1,7 +1,7 @@
 <Project>
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" VersionOverride="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" VersionOverride="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" VersionOverride="10.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" VersionOverride="8.0.1" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
