@@ -1,4 +1,4 @@
-#tool dotnet:?package=GitVersion.Tool&version=6.4.0
+#tool dotnet:?package=GitVersion.Tool&version=6.5.0
 #load "build/records.cake"
 #load "build/helpers.cake"
 using System.Xml.Linq;
@@ -155,10 +155,12 @@ Task("Clean")
     )
 .Then("Integration-Test")
     .WithCriteria<BuildData>( (context, data) => data.ShouldRunIntegrationTests())
-    .Does<BuildData>(
-        static (context, data) => {
+     .DoesForEach<BuildData, string>(
+        static (data, context) => new [] { "net9.0", "net10.0" },
+        static (data, targetFramework, context) => {
+            context.Information("Running integration tests for {0}", targetFramework);
             DirectoryPath sourceProjectPath = data.ProjectRoot.Combine("Devlead.Console.Integration.Test");
-            DirectoryPath targetProjectPath = data.IntegrationTestPath.Combine("Devlead.Console.Integration.Test");
+            DirectoryPath targetProjectPath = data.IntegrationTestPath.Combine($"Devlead.Console.Integration.Test.{targetFramework}");
             FilePath nuGetConfigPath = data.IntegrationTestPath.CombineWithFilePath("nuget.config");
             FilePath cpmPath = data.IntegrationTestPath.CombineWithFilePath("Directory.Packages.props");
 
@@ -235,6 +237,7 @@ Task("Clean")
                     MSBuildSettings = new DotNetMSBuildSettings()
                         .SetConfiguration("IntegrationTest")
                         .WithProperty("DevleadConsoleVersion", data.Version)
+                        .WithProperty("TargetFramework", targetFramework)
                 }
             );
         }
