@@ -7,7 +7,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging" VersionOverride="8.0.1" Pack="false" />
     <PackageFile PackFolder="Dependency" Include="Microsoft.Extensions.Logging" Version="8.0.1" />
     
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" VersionOverride="8.0.1" Pack="false" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" VersionOverride="10.0.1" Pack="false" />
     <PackageFile PackFolder="Dependency" Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
   </ItemGroup>
   
@@ -19,7 +19,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging" VersionOverride="9.0.11" Pack="false" />
     <PackageFile PackFolder="Dependency" Include="Microsoft.Extensions.Logging" Version="9.0.11" />
     
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" VersionOverride="9.0.11" Pack="false" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" VersionOverride="10.0.1" Pack="false" />
     <PackageFile PackFolder="Dependency" Include="Microsoft.Extensions.Logging.Console" Version="9.0.11" />
   </ItemGroup>
 
