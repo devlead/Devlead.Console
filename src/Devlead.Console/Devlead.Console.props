@@ -5,20 +5,4 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn>NU1510</NoWarn>
   </PropertyGroup>
-
-  <Choose>
-    <When Condition="'$(CentralPackageVersionOverrideEnabled)' != 'false'">
-      <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all" VersionOverride="8.0.0" Condition="'$(AzureRepos)' != 'true'" />
-        <PackageReference Include="Microsoft.SourceLink.AzureRepos.Git" PrivateAssets="all" VersionOverride="8.0.0" Condition="'$(AzureRepos)' == 'true'" />
-      </ItemGroup>
-    </When>
-    <Otherwise>
-      <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all" Condition="'$(AzureRepos)' != 'true'" />
-        <PackageReference Include="Microsoft.SourceLink.AzureRepos.Git" PrivateAssets="all" Condition="'$(AzureRepos)' == 'true'" />
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
-
 </Project>
