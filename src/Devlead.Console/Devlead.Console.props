@@ -10,7 +10,7 @@
     <When Condition="'$(CentralPackageVersionOverrideEnabled)' != 'false'">
       <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all" VersionOverride="8.0.0" Condition="'$(AzureRepos)' != 'true'" />
-        <PackageReference Include="Microsoft.SourceLink.AzureRepos.Git" PrivateAssets="all" VersionOverride="8.0.0" Condition="'$(AzureRepos)' == 'true'" />
+        <PackageReference Include="Microsoft.SourceLink.AzureRepos.Git" PrivateAssets="all" VersionOverride="10.0.102" Condition="'$(AzureRepos)' == 'true'" />
       </ItemGroup>
     </When>
     <Otherwise>
