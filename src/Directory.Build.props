@@ -13,7 +13,7 @@
   
   <!-- net9.0 -->
   <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
-    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" VersionOverride="9.0.13" Pack="false" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" VersionOverride="9.0.14" Pack="false" />
     <PackageFile PackFolder="Dependency" Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="9.0.13" />
     
     <PackageReference Include="Microsoft.Extensions.Logging" VersionOverride="9.0.13" Pack="false" />
