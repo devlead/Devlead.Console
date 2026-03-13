@@ -7,20 +7,20 @@
     <PackageReference Include="Microsoft.Extensions.Logging" VersionOverride="8.0.1" Pack="false" />
     <PackageFile PackFolder="Dependency" Include="Microsoft.Extensions.Logging" Version="8.0.1" />
     
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" VersionOverride="10.0.5" Pack="false" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" VersionOverride="8.0.1" Pack="false" />
     <PackageFile PackFolder="Dependency" Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
   </ItemGroup>
   
   <!-- net9.0 -->
   <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" VersionOverride="9.0.14" Pack="false" />
-    <PackageFile PackFolder="Dependency" Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="9.0.13" />
+    <PackageFile PackFolder="Dependency" Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="9.0.14" />
     
     <PackageReference Include="Microsoft.Extensions.Logging" VersionOverride="9.0.14" Pack="false" />
-    <PackageFile PackFolder="Dependency" Include="Microsoft.Extensions.Logging" Version="9.0.13" />
+    <PackageFile PackFolder="Dependency" Include="Microsoft.Extensions.Logging" Version="9.0.14" />
     
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" VersionOverride="10.0.5" Pack="false" />
-    <PackageFile PackFolder="Dependency" Include="Microsoft.Extensions.Logging.Console" Version="9.0.13" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" VersionOverride="9.0.14" Pack="false" />
+    <PackageFile PackFolder="Dependency" Include="Microsoft.Extensions.Logging.Console" Version="9.0.14" />
   </ItemGroup>
 
   <!-- net10.0 -->
