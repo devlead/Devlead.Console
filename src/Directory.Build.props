@@ -16,7 +16,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" VersionOverride="9.0.14" Pack="false" />
     <PackageFile PackFolder="Dependency" Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="9.0.14" />
     
-    <PackageReference Include="Microsoft.Extensions.Logging" VersionOverride="9.0.15" Pack="false" />
+    <PackageReference Include="Microsoft.Extensions.Logging" VersionOverride="9.0.16" Pack="false" />
     <PackageFile PackFolder="Dependency" Include="Microsoft.Extensions.Logging" Version="9.0.14" />
     
     <PackageReference Include="Microsoft.Extensions.Logging.Console" VersionOverride="9.0.14" Pack="false" />
