@@ -7,10 +7,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon/devlead.console.png</PackageIcon>
     <IsPackable>true</IsPackable>
-    <PackBuildOutput>false</PackBuildOutput>
-    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <ContentTargetFolders>contentFiles</ContentTargetFolders>
+    <SourcePackRoot>Devlead/Console</SourcePackRoot>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Devlead.Console.xml</DocumentationFile>
@@ -34,20 +31,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageFile Condition="'$(Configuration)'!='Debug'" Include="**/*.cs" Exclude="obj/**;bin/**" PackagePath="$(ContentTargetFolders)\cs\$(TargetFramework)\Devlead\Console\%(RelativeDir)%(Filename)%(Extension)" />
-    <PackageFile Include="obj/$(Configuration)/$(TargetFramework)/Devlead.Console.GlobalUsings.g.cs" PackagePath="$(ContentTargetFolders)\cs\$(TargetFramework)\Devlead\Console\%(RelativeDir)%(Filename)%(Extension)" />
+    <PackageReference Include="Devlead.SourcePack" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
-     <PackageReference Include="NuGetizer" PrivateAssets="all" />
-  </ItemGroup>
-
-  <ItemGroup>
-     <PackageFile Include="../../icon/LICENSE.md" PackagePath="icon/LICENSE.md" />
-     <PackageFile Include="../../icon/devlead.console.png" PackagePath="icon/devlead.console.png" />
-     <PackageFile Include="../../README.md" PackagePath="README.md" />
-     <PackageFile Include="Devlead.Console.props" PackagePath="build\$(TargetFramework)\Devlead.Console.props" />
-     <PackageFile Include="Devlead.Console.targets" PackagePath="build\$(TargetFramework)\Devlead.Console.targets" />
+    <SourcePackFile Include="../../icon/LICENSE.md" Kind="Metadata" PackagePath="icon/LICENSE.md" />
+    <SourcePackFile Include="../../icon/devlead.console.png" Kind="Metadata" PackagePath="icon/devlead.console.png" />
+    <SourcePackFile Include="../../README.md" Kind="Metadata" />
+    <SourcePackFile Include="Devlead.Console.props" Kind="Build" />
+    <SourcePackFile Include="Devlead.Console.targets" Kind="Build" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' != 'Debug'">
