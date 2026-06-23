@@ -1,3 +1,4 @@
+#!/usr/bin/env dotnet
 #:sdk Cake.Sdk@6.2.0
 #:property IncludeAdditionalFiles=./build/*.cs
 
@@ -138,6 +139,7 @@ Task("Clean")
                 NoBuild = true,
                 NoRestore = true,
                 OutputDirectory = data.NuGetOutputPath,
+                ArgumentCustomization = args => args.Append("/m:1"),
                 MSBuildSettings = data.MSBuildSettings
             }
         )
