@@ -1,5 +1,5 @@
 #!/usr/bin/env dotnet
-#:sdk Cake.Sdk@6.3.0
+#:sdk Cake.Sdk@7.0.0
 #:property IncludeAdditionalFiles=./build/*.cs
 
 using System.Xml.Linq;
@@ -162,7 +162,7 @@ Task("NuGet-Login")
 .Then("Integration-Test")
     .WithCriteria<BuildData>( (context, data) => data.ShouldRunIntegrationTests())
      .DoesForEach<BuildData, string>(
-        static (data, context) => new [] { "net9.0", "net10.0", "net11.0" },
+        static (data, context) => new [] { "net10.0", "net11.0" },
         static (data, targetFramework, context) => {
             context.Information("Running integration tests for {0}", targetFramework);
             DirectoryPath sourceProjectPath = data.ProjectRoot.Combine("Devlead.Console.Integration.Test");
