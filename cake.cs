@@ -236,7 +236,7 @@ Task("NuGet-Login")
                                                                     .Select(packageVersion =>    
                                                     $"""
 
-                                                           <PackageVersion Include="{packageVersion.Attribute("Include")?.Value}" Version="{packageVersion.Attribute("Version")?.Value}" />
+                                                           <PackageVersion Include="{packageVersion.Attribute("Include")?.Value}" Version="{packageVersion.Attribute("Version")?.Value}"{(packageVersion.Attribute("Condition") is { } condition ? $" Condition=\"{condition.Value}\"" : string.Empty)} />
                                                     """)
                                                             )}
                                                         </ItemGroup>
