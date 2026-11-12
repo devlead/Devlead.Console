@@ -10,8 +10,8 @@ using System.Xml.XPath;
  *****************************/
 Setup(
     static context => {
-        InstallTool("dotnet:https://api.nuget.org/v3/index.json?package=DPI&version=2026.10.26.544");
-        InstallTool("dotnet:https://api.nuget.org/v3/index.json?package=GitVersion.Tool&version=6.7.0");
+        InstallTool("dotnet:https://api.nuget.org/v3/index.json?package=DPI&version=2026.11.11.551");
+        InstallTool("dotnet:https://api.nuget.org/v3/index.json?package=GitVersion.Tool&version=6.8.2");
          var assertedVersions = context.GitVersion(new GitVersionSettings
             {
                 OutputType = GitVersionOutput.Json
@@ -100,8 +100,23 @@ Task("NuGet-Login")
     )
 .Then("DPI")
     .Does<BuildData>(
-        static (context, data) => Command(
-                ["dpi", "dpi.exe"],
+        static async (context, data) => {
+            var workload = data.ShouldReportDPI() && data.ShouldPrepareAzureWorkloadIdentity()
+                            ? await GitHubActions.Commands.AzurePrepareWorkloadIdentity(data.AzureTenantId!, data.AzureClientId!)
+                            : null;
+
+            Command(
+                new CommandSettings {
+                    ToolName = "dpi",
+                    ToolExecutableNames = ["dpi", "dpi.exe"],
+                    EnvironmentVariables = workload is null
+                        ? new Dictionary<string, string>()
+                        : new Dictionary<string, string> {
+                            ["AZURE_TENANT_ID"] = workload.TenantId,
+                            ["AZURE_CLIENT_ID"] = workload.ClientId,
+                            ["AZURE_FEDERATED_TOKEN_FILE"] = workload.FederatedTokenFile.FullPath
+                        }
+                },
                 new ProcessArgumentBuilder()
                     .Append("nuget")
                     .Append("--silent")
@@ -112,8 +127,8 @@ Task("NuGet-Login")
                             : "analyze"
                         )
                     .AppendSwitchQuoted("--buildversion", data.Version)
-                
-            )
+            );
+        }
     )
 .Then("Build")
     .DoesForEach<BuildData, FilePath>(
@@ -221,7 +236,7 @@ Task("NuGet-Login")
                                                                     .Select(packageVersion =>    
                                                     $"""
 
-                                                           <PackageVersion Include="{packageVersion.Attribute("Include")?.Value}" Version="{packageVersion.Attribute("Version")?.Value}" />
+                                                           <PackageVersion Include="{packageVersion.Attribute("Include")?.Value}" Version="{packageVersion.Attribute("Version")?.Value}"{(packageVersion.Attribute("Condition") is { } condition ? $" Condition=\"{condition.Value}\"" : string.Empty)} />
                                                     """)
                                                             )}
                                                         </ItemGroup>
