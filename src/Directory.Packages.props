@@ -8,7 +8,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="coverlet.collector" Version="10.1.0" />
-    <PackageVersion Include="Devlead.Testing.MockHttp" Version="2026.10.26.1076" />
+    <PackageVersion Include="Devlead.Testing.MockHttp" Version="2026.11.11.1083" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.15" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="10.0.15" Condition="'$(TargetFramework)' != 'net11.0'" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="11.0.0" Condition="'$(TargetFramework)' == 'net11.0'" />
