@@ -11,7 +11,7 @@
     <PackageVersion Include="Devlead.Testing.MockHttp" Version="2026.10.26.1076" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.15" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="10.0.15" />
-    <PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.15" />
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="11.0.0" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.12.0" />
     <PackageVersion Include="Devlead.SourcePack" Version="2026.11.11.161" />
     <PackageVersion Include="NUnit.Analyzers" Version="4.15.0" />
