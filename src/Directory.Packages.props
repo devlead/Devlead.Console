@@ -24,6 +24,6 @@
     <PackageVersion Include="Spectre.Console.Cli.Extensions.DependencyInjection" Version="0.34.0" />
     <PackageVersion Include="Spectre.Console.Cli" Version="0.57.2" />
     <PackageVersion Include="Spectre.Console.Testing" Version="0.57.2" />
-    <PackageVersion Include="Verify.NUnit" Version="33.3.4" />
+    <PackageVersion Include="Verify.NUnit" Version="33.4.0" />
   </ItemGroup>
 </Project>
